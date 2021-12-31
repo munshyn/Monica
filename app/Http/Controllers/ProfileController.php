@@ -26,8 +26,12 @@ class ProfileController extends Controller
     public function index()
     {
 
-        return view('profile');
+        $deviceKey = app('firebase.firestore')->database()->collection('Devices')->documents();
+        
+
+        return view('profile', compact('deviceKey'));
     }
+
     public function edit()
     {
 

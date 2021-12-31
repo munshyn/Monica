@@ -31,4 +31,8 @@ class DeviceController extends Controller
 
         return redirect('firebase.add')->with('status', 'Device Added Successfully');
     }
+
+    public function dashboard(Request $request){
+        return view('firebase.dashboard');
+    }
 }

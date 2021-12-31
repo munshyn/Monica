@@ -6,7 +6,6 @@
 
 <body>
   <div class="main-content">
-    {{-- <div class="main-content" style="background-image: url(https://wallpaperaccess.com/full/1377799.png); background-size: 50%; background-position: center right;  background-repeat: no-repeat;"> --}}
     <!-- Header -->
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
       <!-- Mask -->
@@ -22,11 +21,6 @@
           </div>
         </div>
       </div>
-      {{-- <div class="card-profile-image" style="margin-left:13%" >
-        <a href="#">
-          <img src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-4.jpg" class="rounded-circle">
-        </a>
-      </div> --}}
     </div>
     <!-- Page content -->
     
@@ -83,13 +77,13 @@
                 </div>
                 <hr class="my-4">
                 <!-- Description -->
-                <h6 class="heading-small text-muted mb-4">About me</h6>
+                {{-- <h6 class="heading-small text-muted mb-4">About me</h6>
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label>About Me</label>
                     <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">You can tell about yourself here</textarea>
                   </div>
-                </div>
+                </div> --}}
               </form>
             </div>
           </div>
