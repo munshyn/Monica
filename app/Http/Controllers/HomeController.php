@@ -25,7 +25,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $deviceKey = app('firebase.firestore')->database()->collection('Users')->documents(Auth::user()->name);        
+        $deviceKey = app('firebase.firestore')->database()->collection(Auth::user()->name)->documents();
 
         return view('home', compact('deviceKey'));
     }

@@ -54,8 +54,6 @@
                         </div>
                     @endif
 
-                    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
                     @forelse ($deviceKey as $devices)
                         
                     <div class="mt-5">
@@ -84,28 +82,20 @@
                                 {{-- </div> --}}
 
                                 <div class="col-12 col-md-4 text-center">
-                                    <a href="{{ url('/dashboard') }}" class="f-n-hover btn btn-info btn-raised px-4 py-25 w-75 text-600">Dashboard</a>
+                                    <form method="POST" action="{{ url('/dashboard') }}">
+                                        @csrf
+                                        <input id="secret" type="text" class="form-control @error('secret_key') is-invalid @enderror" name="secret" value={{$devices->id()}} hidden>
+                                        <button type="submit" class="f-n-hover btn btn-info btn-raised px-4 py-25 w-75 text-600">
+                                            {{ __('Dashboard') }}
+                                        </button>
+                                        {{-- <a href="{{ url('/', ['secret' => $devices->id()]) }}" class=""></a> --}}
+                                    </form>
                                 </div>
+                                
                             </div>
 
                         </div>
                     </div>
-                        
-                    @else
-                    <div class="mt-5">
-                        <div class="container-fluid d-style my-2 py-3 rounded shadow-lg">
-                            <!-- Basic Plan -->
-                            <div class="row align-items-center">
-                                <div class="col-12 col-md-4 text-center">
-                                    <h4 class="pt-3 text-170 text-600 text-primary-d1 letter-spacing">
-                                    No devices found
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    @endif
 
                     @empty
                     <div class="mt-5">
