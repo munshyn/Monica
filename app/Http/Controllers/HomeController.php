@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,8 +25,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $deviceKey = app('firebase.firestore')->database()->collection('Devices')->documents();
-        
+        $deviceKey = app('firebase.firestore')->database()->collection('Users')->documents(Auth::user()->name);        
 
         return view('home', compact('deviceKey'));
     }

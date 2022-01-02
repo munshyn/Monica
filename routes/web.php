@@ -36,3 +36,15 @@ Route::post('/add', [DeviceController::class, 'index']);
 
 Route::get('/dashboard', [DeviceController::class, 'dashboard']);
 
+Route::get('/test', function () {
+
+    $add = app('firebase.firestore')->database()->collection('Users')->document(Auth::user()->name);
+                $add->set([
+                    'userID' => Auth::user()->id,
+                    'userName' => Auth::user()->name,
+                    'secretKey' => 'supier',
+                    'deviceName' => 'super'
+                ]);
+
+    // return view('test');
+});
