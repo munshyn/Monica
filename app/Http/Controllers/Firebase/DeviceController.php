@@ -46,25 +46,35 @@ class DeviceController extends Controller
     }
 
     public function dashboard(Request $request){
-        $current_date_time = Carbon::now()->toDateTimeString();
+        //$current_date_time = Carbon::now()->toDateTimeString();
         $current_timestamp = Carbon::now()->timestamp;
-        //3600 in one hour
         $first_time=1640962800;
-        $i=0;
-        for($i=0;$current_timestamp<$first_time;$current_timestamp-604800){
-            $i++;
-        }
+        //3600 in one hour
+        $i=1;
+        $w=$current_timestamp-$first_time;
+        $w=$w/604800;
+        $w=(int)$w;
+        $i=$i+$w;
         $week="week".$i;
-        
-        for($i=0;$current_timestamp<$first_time;$current_timestamp-86400){
-            $i++;
-            if($i==8){
-                $i=1;
-            }
-        }
+        // for($i=0;$current_timestamp>$first_time;$current_timestamp-604800){
+        //     $i++;
+        // }
+        $i=1;
+        $d=$current_timestamp-$first_time;
+        $d=$d/86400;
+        $d=(int)$d;
+        $i=$i+$d;
         $day="day".$i;
+        // $current_timestamp = now()->timestamp;
+        // for($i=0;$current_timestamp<$first_time;$current_timestamp-86400){
+        //     $i++;
+        //     if($i==8){
+        //         $i=1;
+        //     }
+        // }
+        //$day="day".$i;
 
-        $data = app('firebase.firestore')->database()->collection('Devices')->document($request->secret)->collection('data')->document('week1')->collection('day2')->document('hour1');
+        $data = app('firebase.firestore')->database()->collection('Devices')->document($request->secret)->collection('data')->document($week)->collection($day)->documents();
         return view('firebase.dashboard', compact('data'));
     }
 }

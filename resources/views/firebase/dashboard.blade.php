@@ -8,11 +8,10 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
 window.onload = function() {
-
-var chart = new CanvasJS.Chart("myAreaChart", {
+var chart = new CanvasJS.Chart("myAreaChart", { 
 	animationEnabled: true,
 	title: {
-		text: "Hourly Average CPU Utilization"
+		text: "Hourly Average CO2 Monitoring"
 	},
 	axisX: {
 		title: "Time"
@@ -22,6 +21,7 @@ var chart = new CanvasJS.Chart("myAreaChart", {
 		suffix: "%",
 		includeZero: true
 	},
+	// ($deviceKey as $devices)
 	data: [{
 		type: "line",
 		name: "CPU Utilization",
@@ -69,7 +69,7 @@ chart.render();
       <!-- Area Chart Example-->
       <div class="card mb-3" style="padding-bottom:24%; margin:2%">
         <div class="card-header">
-          <i class="fa fa-area-chart"></i> Area Chart Example</div>
+          <i class="fa fa-area-chart"></i> HOURLY GAS MONITORING</div>
         <div class="card-body">
           <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>  
           <div id="myAreaChart" width="100%" height="30"></div>
@@ -90,9 +90,10 @@ chart.render();
                   <div class="h4 mb-0 text-primary">katmon</div>
                   <div class="small text-muted">HOURLY</div>
                   <hr>
-                  <div class="h4 mb-0 text-warning">{{$data->data()['CO2']}}</div>
+                  {{-- <div class="h4 mb-0 text-warning"> {{ $data->snapshot()['CO2']}}</div> --}}
+				  <div class="h4 mb-0 text-warning"></div>
                   <div class="small text-muted">DAILY</div>
-                  <hr>
+				  <hr>
                   <div class="h4 mb-0 text-success">$16,219</div>
                   <div class="small text-muted">WEEKLY</div>
               </div>
