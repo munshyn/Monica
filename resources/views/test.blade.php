@@ -87,7 +87,7 @@ chart.render();
                   <canvas id="myBarChart" width="100" height="50"></canvas>
                 </div>
                 <div class="col-sm-4 text-center my-auto">
-                  <div class="h4 mb-0 text-primary">katmon</div>
+                  <div class="h4 mb-0 text-primary">PakHusky</div>
                   <div class="small text-muted">HOURLY</div>
                   <hr>
                   <div class="h4 mb-0 text-warning">$18,474</div>
