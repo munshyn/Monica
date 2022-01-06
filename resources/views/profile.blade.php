@@ -25,9 +25,6 @@
     <!-- Page content -->
     
     <div class="container-fluid mt--7">
-      {{-- <div style="margin-left:54%;margin-bottom:1%">
-        <a href="#!" class="btn btn-info">Edit profile</a>
-      </div> --}}
       <div class="row">
         {{-- <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
           <div class="card card-profile shadow">
@@ -75,15 +72,6 @@
                     </div>
                   </div>
                 </div>
-                <hr class="my-4">
-                <!-- Description -->
-                {{-- <h6 class="heading-small text-muted mb-4">About me</h6>
-                <div class="pl-lg-4">
-                  <div class="form-group focused">
-                    <label>About Me</label>
-                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">You can tell about yourself here</textarea>
-                  </div>
-                </div> --}}
               </form>
             </div>
           </div>
