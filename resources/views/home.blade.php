@@ -1,38 +1,5 @@
-{{-- <html>
-    <head>
-        <style>
-
-            .Cart-Container{
-                width: 70%;
-                height: 85%;
-                background-color: #ffffff;
-                border-radius: 20px;
-                box-shadow: 0px 25px 40px #1687d933;
-                align-items: center;
-                margin-left: 16%;
-                }
-            .Header{
-                margin: auto;
-                width: 90%;
-                height: 15%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-top: 3%;
-                }
-            .Heading{
-                font-size: 30px;
-                font-family: ‘Open Sans’;
-                font-weight: 700;
-                color: #2F3841;
-            }
-}
-
-        </style>
-    </head> --}}
-
-
 @extends('layouts.app')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -88,7 +55,6 @@
                                         <button type="submit" class="f-n-hover btn btn-info btn-raised px-4 py-25 w-75 text-600">
                                             {{ __('Dashboard') }}
                                         </button>
-                                        {{-- <a href="{{ url('/', ['secret' => $devices->id()]) }}" class=""></a> --}}
                                     </form>
                                 </div>
                                 

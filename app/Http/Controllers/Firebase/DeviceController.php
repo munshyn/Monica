@@ -24,19 +24,25 @@ class DeviceController extends Controller
         {
             if($secret->id() == $request->secret_key)
             {
-                $setNew = app('firebase.firestore')->database()->collection('Devices')->document($secret->id());
-                $setNew->set([
-                    'userID' => Auth::user()->id,
-                    'deviceName' => $request->device_name
-                ]);
+                $setNew = app('firebase.firestore')->database()->collection('Devices')->document($secret->id())->snapshot();
 
-                $add = app('firebase.firestore')->database()->collection(Auth::user()->name)->document($secret->id());
-                $add->set([
-                    'userID' => Auth::user()->id,
-                    'deviceName' => $request->device_name
-                ]);
+                if($setNew->data()['userID'] == '')
+                {
+                    $setNew->set([
+                        'userID' => Auth::user()->id,
+                        'deviceName' => $request->device_name
+                    ]);
+                    $add = app('firebase.firestore')->database()->collection(Auth::user()->name)->document($secret->id());
+                    $add->set([
+                        'userID' => Auth::user()->id,
+                        'deviceName' => $request->device_name
+                    ]);
 
-                return redirect()->back()->with('status', 'Device Added Successfully');
+                    return redirect()->back()->with('status', 'Device Added Successfully');
+                }
+                else
+                    return redirect()->back()->with('fail', 'Device is already in use!');
+
             }
             else
                 continue;
