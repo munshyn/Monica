@@ -7,7 +7,7 @@
 <head>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
-	 var h = new Array(24).fill("null");
+	 var h = new Array(24).fill(1);
 	 for(var hour=0;hour<24;hour++){
 		var jam="hour".hour;
 		<?php foreach($data as $hour){ ?>;
