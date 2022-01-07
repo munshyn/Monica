@@ -36,9 +36,4 @@ Route::post('/add', [DeviceController::class, 'index']);
 
 Route::post('/dashboard', [DeviceController::class, 'dashboard']);
 
-Route::get('/test', function () {
-
-    return view('test');
-});
-
 

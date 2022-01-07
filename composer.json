@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.5|^8.0",
         "cnvs/canvas": "^5.2",
+        "consoletvs/charts": "6.*",
         "fideloper/proxy": "^4.4",
         "google/cloud-firestore": "^1.20",
         "kreait/laravel-firebase": "^3.4",
