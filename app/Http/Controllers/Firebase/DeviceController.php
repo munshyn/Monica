@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Firebase;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Kreait\Firebase\Factory;
+use Kreait\Firebase\Database;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Charts\CO2;
@@ -12,9 +13,10 @@ use App\Charts\CO2;
 class DeviceController extends Controller
 {
     
-    public function __construct()
+    public function __construct(Database $database)
     {
         $this->middleware('auth');
+        $this->database = $database;
     }
     
     public function index(Request $request)
@@ -53,6 +55,9 @@ class DeviceController extends Controller
     }
 
     public function dashboard(Request $request){
+        
+        $devicekey = $this->database->getReference('devices/'.$request->secret)->getSnapshot();
+        $currValue = $devicekey->getValue();
         //$current_date_time = Carbon::now()->toDateTimeString();
         $current_timestamp = Carbon::now()->timestamp;
         $first_time=1641059558;
@@ -101,6 +106,6 @@ class DeviceController extends Controller
         $bchart->dataset('CO2','bar',[$d[0],$d[1],$d[2],$d[3],$d[4],$d[5],$d[6]]);
 
 
-        return view('Firebase.dashboard', compact('achart','bchart'));
+        return view('Firebase.dashboard', compact('achart','bchart','currValue'));
     }
 }

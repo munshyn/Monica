@@ -26,14 +26,14 @@ Route::get('/addD', 'HomeController@add')->name('add');
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::get('/edit', 'ProfileController@edit')->name('edit');
 Route::post('/profile', 'ProfileController@new')->name('profile');
+
 Route::get('change-password', 'ChangePasswordController@index');
 Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
-
-// Route::get('/dashboard', 'DeviceController@dashboard')->name('dashboard');
-// Route::post('/add', 'DeviceController@index')->name('index');
 
 Route::post('/add', [DeviceController::class, 'index']);
 
 Route::post('/dashboard', [DeviceController::class, 'dashboard']);
+
+
 
 
