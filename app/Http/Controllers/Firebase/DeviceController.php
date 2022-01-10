@@ -108,4 +108,8 @@ class DeviceController extends Controller
 
         return view('Firebase.dashboard', compact('achart','bchart','currValue'));
     }
+
+    public function refresh(){
+        return;
+    }
 }

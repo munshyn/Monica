@@ -8,10 +8,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-  /*Pen styling*/
-.container {
-}
-
 /*alert styling*/
 .alert-success {
   border-color: #e6e6e6;
@@ -116,6 +112,11 @@
     border-color: none;
     background: #c82630;
   }
+
+  table, th, td {
+  border: 1px solid black;
+  background-color: #c9c8d1;
+}
 }
 
 </style>
@@ -160,63 +161,94 @@
 				  <hr>
                   <div class="h4 mb-0 text-success"></div>
                   <div class="small text-muted">WEEKLY</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card mb-3">
-          <div class="card-header">
-              <i class="fa fa-bar-chart"></i> Current Gas Analysis</div>
-            <div class="card-body">
-              @foreach($currValue as $value)
-              @endforeach
-              <div class="container">
-                <div class="alert alert-info">
-                  <div class="icon hidden-xs">
-                    <i class="fa fa-info-circle"></i>
-                  </div>
-                  <strong><div style="text-align: center"> Gas Info</div>
-                    CO2 VALUE LESS THAN<Br/> 
-                  CO2 VALUE BETWEEN<Br/> 
-                  CO2 VALUE GREATER THAN<Br/></strong>
-                  
-                </div>
-                @if($value>0)
+        <div class="col-lg-4">
+          <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-bar-chart"></i>Carbon Dioxide and Safety</div>
+                <div class="card-body">
+                  <p>
+                  Carbon dioxide is a non-toxic and non-flammable gas. However, exposure to elevated concentrations can induce
+                  a risk to life. Whenever CO2 gas or dry ice is used, produced, shipped, or stored, CO2 concentration can rise 
+                  to dangerously high levels. Because CO2 is odorless and colorless, leakages are impossible to detect, meaning
+                  proper sensors are needed to help ensure the safety of personnel. 
+                  </p>
+                  <div style="background-color: #b1c6f5; padding:3%">
+                  <p>Effect of Different Levels of CO</p>
+                    <table style="width: 100%;">
+                      <tr>
+                        <td style="background-color: #5f82cc;">Concentration</td>
+                        <td style="background-color: #5f82cc;">Effect</td>
+                      </tr>
+                      <tr>
+                        <td>350 - 450 ppm</td>
+                        <td>Typical atmospheric concentration</td>
+                      </tr>
+                      <tr>
+                        <td>600 - 800 ppm </td>
+                        <td>Acceptable indoor air quality</td>
+                      </tr>
+                      <tr>
+                        <td>1,000 ppm </td>
+                        <td>Tolerable indoor air quality</td>
+                      </tr>
+                      <tr>
+                        <td>5,000 ppm </td>
+                        <td>Average exposure limit over 8-hour period</td>
+                      </tr>
+                      <tr>
+                        <td>6,000 - 30,000 ppm</td>
+                        <td>Concern, short exposure only</td>
+                      </tr>
 
-                <div class="alert alert-danger">
-                  <div class="icon hidden-xs">
-                    <i class="fa fa-ban"></i>
+                    </table>
                   </div>
-                  <strong><div style="text-align: center"> Gas Information: {{ $value }}<br/>
-                  Warning</div></strong>
-                  Hey! Be careful of what you're doing over there!
                 </div>
-                @elseif($value<50000)
-                <div class="alert alert-success">
-                  <div class="icon hidden-xs">
-                    <i class="fa fa-check"></i>
-                  </div>
-                  <strong>Success</strong>
-                  <Br /> Wow! Great job! Whatever you were doing works!
-                </div>
-                <div class="alert alert-warning">
-                  <div class="icon hidden-xs">
-                    <i class="fa fa-exclamation-circle"></i>
-                  </div>
-                  <strong>Danger</strong>
-                  <Br /> Oh dear. You just broke the internet.
-                </div>
-              </div>
-              @endif
-
+            </div>
           </div>
         </div>
-      </div>
+        {{-- <div wire:click="refresh" class="card mb-3" style="margin-left:20%;margin-right:25%;margin-top:1%;"> --}}
+        <div class="card mb-3" style="margin-left:20%;margin-right:25%;margin-top:1%;">
+          <div class="card-header">
+             Current Gas Analysis</div>
+          <div class="card-body">
+              @foreach($currValue as $value)
+              @endforeach   
+              <strong><div style="text-align: center"><h3>C02 value<br/> {{ $value }}<br/></h3></div></strong>
+              @if($value>6000)
+              <div class="alert alert-danger">
+                <div class="icon hidden-xs">
+                  <i class="fa fa-exclamation-circle"></i>
+                </div>
+                <strong>Danger</strong>
+                <Br /> Concern, short exposure only
+              </div>
+              @elseif(($value>5000)&&($value<6000))
+              <div class="alert alert-warning">
+                <div class="icon hidden-xs">
+                  <i class="fa fa-exclamation-circle"></i>
+                </div>
+                <strong>Alert</strong>
+                <Br /> Average exposure limit over 8-hour period
+              </div>
+              @elseif(($value>0)&&($value<5000))
+              <div class="alert alert-success">
+                <div class="icon hidden-xs">
+                  <i class="fa fa-exclamation-circle"></i>
+                </div>
+                <strong>Good</strong>
+                <Br /> Enjoy your outdoor activities.
+            </div>
+            @endif
+            {{-- <svg wire.target="refresh" wire:loading.class="animate-spin"xmlns="http://www.w3.org/2000/svg" width="20"> --}}
+          </div>
+        </div>
     </div>
   </div>
-
   
 	  
 </body>
