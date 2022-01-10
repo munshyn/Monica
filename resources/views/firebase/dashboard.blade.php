@@ -142,7 +142,7 @@
           <!-- Example Bar Chart Card-->
           <div class="card ">
             <div class="card-header">
-              <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
+              <i class="fa fa-bar-chart"></i> Daily Gas Analysis</div>
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-8 my-auto">
@@ -152,15 +152,13 @@
 				  </div>
                 </div>
                 <div class="col-sm-4 text-center my-auto">
-                  <div class="h4 mb-0 text-primary"></div>
-                  <div class="small text-muted">HOURLY</div>
+                  <h1>Weekly Analysis</h1>
+				          <hr>
+                  <div class="h4 mb-0 text-success">
+                    {{round($week)}}&ensp;ppm
+                  </div>
+                  <div class="small text-muted">Last week Analysis</div>
                   <hr>
-                  {{-- <div class="h4 mb-0 text-warning"> {{ $data->snapshot()['CO2']}}</div> --}}
-				  <div class="h4 mb-0 text-warning"></div>
-                  <div class="small text-muted">DAILY</div>
-				  <hr>
-                  <div class="h4 mb-0 text-success"></div>
-                  <div class="small text-muted">WEEKLY</div>
                 </div>
               </div>
             </div>
@@ -218,7 +216,7 @@
           <div class="card-body">
               @foreach($currValue as $value)
               @endforeach   
-              <strong><div style="text-align: center"><h3>C02 value<br/> {{ $value }}<br/></h3></div></strong>
+              <strong><div style="text-align: center"><h3>C02 value<br/> {{ round($value) }}&ensp;ppm<br/></h3></div></strong>
               @if($value>6000)
               <div class="alert alert-danger">
                 <div class="icon hidden-xs">
