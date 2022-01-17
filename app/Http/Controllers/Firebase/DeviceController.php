@@ -27,7 +27,7 @@ class DeviceController extends Controller
             {
                 $setNew = app('firebase.firestore')->database()->collection('Devices')->document($secret->id())->snapshot();
 
-                if($setNew->data()['userID'] == '')
+                if($setNew->data()['userID'] == 0 )
                 {
                     $setNew->set([
                         'userID' => Auth::user()->id,
